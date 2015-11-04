@@ -1,0 +1,11 @@
+dependencies {
+	compile project(':salix-feed')
+	
+	compile "com.sachinhandiekar:jInstagram:1.1.4"
+}
+
+springBoot {
+	mainClass = 'org.lukosan.salix.Application'
+}
+
+bintray.pkg.version.desc = 'Salix Instagram feed module'
