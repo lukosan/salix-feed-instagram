@@ -9,6 +9,7 @@ import javax.servlet.Servlet;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.lukosan.salix.SalixService;
+import org.lukosan.salix.feed.SalixFeedSource;
 import org.lukosan.salix.feed.instagram.InstagramProperties;
 import org.lukosan.salix.feed.instagram.SalixFeedInstagram;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,12 @@ public class InstagramFeedAutoConfiguration {
 		}
 		
 		@Bean
-		public List<SalixFeedInstagram> salixFeeds() {
+		public SalixFeedSource feeder() {
+			return new SalixFeedSource(salixInstagramFeeds());
+		}
+		
+		@Bean
+		public List<SalixFeedInstagram> salixInstagramFeeds() {
 			return salixService.configurationsFor(SalixFeedInstagram.class.getName()).stream()
 					.map(config -> new SalixFeedInstagram(config)).collect(Collectors.toList());
 		}
