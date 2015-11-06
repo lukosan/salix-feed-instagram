@@ -1,4 +1,5 @@
 dependencies {
+	compile project(':salix-mvc')
 	compile project(':salix-feed')
 	
 	compile "com.sachinhandiekar:jInstagram:1.1.4"
