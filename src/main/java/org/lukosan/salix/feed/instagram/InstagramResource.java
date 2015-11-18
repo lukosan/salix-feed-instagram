@@ -7,11 +7,11 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jinstagram.entity.users.feed.MediaFeedData;
-import org.lukosan.salix.SalixResource;
+import org.lukosan.salix.SalixResourceJson;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class InstagramResource implements SalixResource {
+public class InstagramResource implements SalixResourceJson {
 
 	private static final Log logger = LogFactory.getLog(InstagramResource.class);
 	
@@ -47,5 +47,15 @@ public class InstagramResource implements SalixResource {
 	@Override
 	public String getSourceUri() {
 		return data.getLink();
+	}
+
+	@Override
+	public String getResourceId() {
+		return null;
+	}
+
+	@Override
+	public String getResourceUri() {
+		return null;
 	}
 }

@@ -15,6 +15,7 @@ import org.jinstagram.exceptions.InstagramException;
 import org.lukosan.salix.MapUtils;
 import org.lukosan.salix.SalixConfiguration;
 import org.lukosan.salix.SalixResource;
+import org.lukosan.salix.SalixResourceJson;
 import org.lukosan.salix.SalixService;
 import org.lukosan.salix.feed.SalixFeed;
 import org.springframework.util.StringUtils;
@@ -100,7 +101,7 @@ public class SalixFeedInstagram implements SalixFeed {
 				logger.info("Processing Instagram feed");
 			try {
 				for(MediaFeedData data : api().getRecentMediaFeed(api().getCurrentUserInfo().getData().getId()).getData()) {
-					SalixResource resource = new InstagramResource(salixScope, data);
+					SalixResourceJson resource = new InstagramResource(salixScope, data);
 					if(null == salixService.resource(resource.getSourceId(), resource.getScope())) {
 						resources.add(salixService.save(resource.getScope(), resource.getSourceId(), data.getLink(), resource.getMap()));
 					} else
