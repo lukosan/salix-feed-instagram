@@ -7,7 +7,9 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jinstagram.entity.users.feed.MediaFeedData;
+import org.lukosan.salix.ResourceWriter;
 import org.lukosan.salix.SalixResourceJson;
+import org.lukosan.salix.SalixResourceType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -26,7 +28,7 @@ public class InstagramResource implements SalixResourceJson {
 	}
 	
 	public String getSourceId() {
-		return String.format("instagram_%s", data.getId());
+		return String.format("instagram_%s.json", data.getId());
 	}
 	
 	public String getScope() {
@@ -57,5 +59,28 @@ public class InstagramResource implements SalixResourceJson {
 	@Override
 	public String getResourceUri() {
 		return null;
+	}
+
+	@Override
+	public SalixResourceType getResourceType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getContentType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void writeTo(ResourceWriter writer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean exists() {
+		return true;
 	}
 }

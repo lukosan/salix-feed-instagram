@@ -102,8 +102,10 @@ public class SalixFeedInstagram implements SalixFeed {
 			try {
 				for(MediaFeedData data : api().getRecentMediaFeed(api().getCurrentUserInfo().getData().getId()).getData()) {
 					SalixResourceJson resource = new InstagramResource(salixScope, data);
-					if(null == salixService.resource(resource.getSourceId(), resource.getScope())) {
-						resources.add(salixService.save(resource.getScope(), resource.getSourceId(), data.getLink(), resource.getMap()));
+					SalixResource r = salixService.resource(resource.getSourceId(), resource.getScope()); 
+					if(null == r || ! r.exists()) {
+						salixService.save(resource.getScope(), resource.getSourceId(), data.getLink(), resource.getMap());
+						resources.add(resource);
 					} else
 						break;
 				}
