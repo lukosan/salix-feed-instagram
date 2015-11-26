@@ -63,14 +63,12 @@ public class InstagramResource implements SalixResourceJson {
 
 	@Override
 	public SalixResourceType getResourceType() {
-		// TODO Auto-generated method stub
-		return null;
+		return SalixResourceType.JSON;
 	}
 
 	@Override
 	public String getContentType() {
-		// TODO Auto-generated method stub
-		return null;
+		return "application/json";
 	}
 
 	@Override
